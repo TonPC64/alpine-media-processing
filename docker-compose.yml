@@ -1,0 +1,17 @@
+version: "3.5"
+
+services:
+  alpine-media-processing:
+    container_name: alpine-media-processing
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    volumes:
+      - ./:/src/go
+    ports:
+      - 8080:8080
+    environment:
+      - APP_ENV=development
+      - APP_PORT=8080
+    working_dir: /src/go
+    command: go run .
